@@ -1,21 +1,23 @@
+# frozen_string_literal: true
+
 class Cellphone
   attr_accessor :oem, :model, :launch_announced, :launch_status, :body_dimensions,
                 :body_weight, :body_sim, :display_type, :display_size, :display_resolution,
                 :features_sensors, :platform_os
 
-  def initialize(oem, model, announced, status, dimension, weight, sim, type, size, resolution, sensor, os)
-    @oem = oem
-    @model = model
-    @launch_announced = announced
-    @launch_status = status
-    @body_dimensions = dimension
-    @body_weight = weight
-    @body_sim = sim
-    @display_type = type
-    @display_size = size
-    @display_resolution = resolution
-    @features_sensors = sensor
-    @platform_os = os
+  def initialize(row)
+    @oem = row['oem']
+    @model = row['model']
+    @launch_announced = row['launch_announced']
+    @launch_status = row['launch_status']
+    @body_dimensions = row['body_dimensions']
+    @body_weight = row['body_weight']
+    @body_sim = row['body_sim']
+    @display_type = row['display_type']
+    @display_size = row['display_size']
+    @display_resolution = row['display_resolution']
+    @features_sensors = row['features_sensors']
+    @platform_os = row['platform_os']
 
     if row
       # Initialize with values from the row if provided

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'csv'
 require_relative 'Cell'
 require_relative 'cellphone'
 
 
 # Define the path to your CSV file
-csv_path = 'cells.csv'
+csv_path = 'C:/Users/giang/RubymineProjects/Alternative-programming-language/scr/cells.csv'
 
 # Initialize Cell object
 cell = Cell.new
@@ -70,7 +72,10 @@ def process_value(cell, key, value, row)
     end
 
     cell.send("set_#{key}", value, cell.send("get_#{key}", value).to_i + 1)
-
+    if key == 'model'
+      cellphone = Cellphone.new(row)
+      cell.add_cellphone(cellphone)
+    end
 end
 
 # Read the CSV file
@@ -107,3 +112,13 @@ puts "Features sensors counts:"
 puts cell.features_sensors.inspect
 puts "Platform OS counts:"
 puts cell.platform_os.inspect
+
+# Output detailed information of the first 100 cellphones
+puts "First 100 Cellphones:"
+cell.get_cellphones.first(100).each_with_index do |phone, index|
+  puts "Cellphone ##{index + 1}:"
+  phone.instance_variables.each do |var|
+    puts "#{var.to_s.delete('@')}: #{phone.instance_variable_get(var)}"
+  end
+  puts "----------------------------"
+end
