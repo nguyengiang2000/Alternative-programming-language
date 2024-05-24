@@ -124,5 +124,5 @@ end
 
 # Call the function to list cellphones by OEM name
 #list_cellphones_by_oem(cell, "Huawei")  # Replace "Samsung" with the desired OEM name
-# delete phone by given name
-#delete_cellphones_by_oem(cell, "Samsung")
+# Delete phone by given OEM name
+#delete_cellphones_by_oem(cell, "Xiaomi")
