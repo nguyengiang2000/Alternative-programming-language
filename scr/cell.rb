@@ -145,3 +145,76 @@ class Cell
     @oem.size
   end
 end
+
+# Function to list all cellphones
+def list_all_cellphones(cell)
+  # Get all cellphone objects
+  cellphones = cell.get_cellphones
+
+  # Iterate over each cellphone and print its details
+  cellphones.each_with_index do |phone, index|
+    puts "Cellphone ##{index + 1}:"
+    phone.instance_variables.each do |var|
+      puts "#{var.to_s.delete('@')}: #{phone.instance_variable_get(var)}"
+    end
+    puts "----------------------------"
+  end
+end
+
+def calculate_average_weight(cell)
+  # Initialize a hash to store the total weight and count of devices for each OEM
+  oem_weights = Hash.new { |hash, key| hash[key] = { total_weight: 0, count: 0 } }
+
+  # Iterate over each cellphone
+  cell.get_cellphones.each do |phone|
+    # Get the OEM name and weight of the device
+    oem = phone.get_oem
+    weight = phone.get_body_weight.to_f  # Convert weight to a floating-point number
+
+    # Add weight to the total weight for the OEM and increment the count
+    oem_weights[oem][:total_weight] += weight
+    oem_weights[oem][:count] += 1
+  end
+
+  # Initialize a hash to store the average weight for each OEM
+  average_weights = {}
+
+  # Calculate the average weight for each OEM
+  oem_weights.each do |oem, data|
+    total_weight = data[:total_weight]
+    count = data[:count]
+
+    # Calculate the average weight (handling division by zero)
+    average_weight = count.zero? ? nil : total_weight / count.to_f
+
+    # Store the average weight for the OEM
+    average_weights[oem] = average_weight
+  end
+
+  # Return the hash of average weights
+  average_weights
+end
+
+# Function to delete duplicated cellphone objects
+def delete_duplicates(cell)
+  # Get all cellphone objects
+  cellphones = cell.get_cellphones
+
+  # Create a hash to store unique identifiers of cellphones
+  unique_cellphones = {}
+
+  # Iterate over each cellphone
+  cellphones.each do |phone|
+    # Define a unique identifier for comparison
+    identifier = "#{phone.get_oem}_#{phone.get_model}"
+
+    # Check if the identifier already exists
+    if unique_cellphones[identifier]
+      # If the identifier already exists, delete the duplicate cellphone object
+      cell.delete_cellphone(phone)
+    else
+      # If the identifier doesn't exist, mark it as seen
+      unique_cellphones[identifier] = true
+    end
+  end
+end

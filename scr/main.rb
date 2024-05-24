@@ -111,50 +111,10 @@ puts "Platform OS counts:"
 puts cell.platform_os.inspect
 
 
-# Output detailed information of the first 100 cellphones
-puts "First 100 Cellphones:"
-cell.get_cellphones.first(10).each_with_index do |phone, index|
-  puts "Cellphone ##{index + 1}:"
-  phone.instance_variables.each do |var|
-    puts "#{var.to_s.delete('@')}: #{phone.instance_variable_get(var)}"
-  end
-  puts "----------------------------"
-end
+# Call the function to delete duplicated cellphone objects
+delete_duplicates(cell)
 
 # Function to calculate average weight for each OEM
-def calculate_average_weight(cell)
-  # Initialize a hash to store the total weight and count of devices for each OEM
-  oem_weights = Hash.new { |hash, key| hash[key] = { total_weight: 0, count: 0 } }
-
-  # Iterate over each cellphone
-  cell.get_cellphones.each do |phone|
-    # Get the OEM name and weight of the device
-    oem = phone.get_oem
-    weight = phone.get_body_weight.to_f  # Convert weight to a floating-point number
-
-    # Add weight to the total weight for the OEM and increment the count
-    oem_weights[oem][:total_weight] += weight
-    oem_weights[oem][:count] += 1
-  end
-
-  # Initialize a hash to store the average weight for each OEM
-  average_weights = {}
-
-  # Calculate the average weight for each OEM
-  oem_weights.each do |oem, data|
-    total_weight = data[:total_weight]
-    count = data[:count]
-
-    # Calculate the average weight (handling division by zero)
-    average_weight = count.zero? ? nil : total_weight / count.to_f
-
-    # Store the average weight for the OEM
-    average_weights[oem] = average_weight
-  end
-
-  # Return the hash of average weights
-  average_weights
-end
 
 puts "Average Weight for Each OEM:"
 average_weights = calculate_average_weight(cell)
