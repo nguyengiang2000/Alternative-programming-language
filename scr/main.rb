@@ -121,3 +121,8 @@ average_weights = calculate_average_weight(cell)
 average_weights.each do |oem, average_weight|
   puts "#{oem}: #{average_weight || 'No data'}"
 end
+
+# Call the function to list cellphones by OEM name
+#list_cellphones_by_oem(cell, "Huawei")  # Replace "Samsung" with the desired OEM name
+# delete phone by given name
+#delete_cellphones_by_oem(cell, "Samsung")

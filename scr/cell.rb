@@ -218,3 +218,43 @@ def delete_duplicates(cell)
     end
   end
 end
+
+# Function to list cellphones by OEM name
+def list_cellphones_by_oem(cell, oem_name)
+  # Get all cellphone objects
+  cellphones = cell.get_cellphones
+
+  # Filter cellphones by the provided OEM name
+  selected_cellphones = cellphones.select { |phone| phone.get_oem == oem_name }
+
+  # If no cellphones found for the given OEM name, print a message
+  if selected_cellphones.empty?
+    puts "No cellphones found for #{oem_name}."
+  else
+    # Print the details of cellphones for the given OEM name
+    puts "Cellphones for #{oem_name}:"
+    selected_cellphones.each_with_index do |phone, index|
+      puts "Cellphone ##{index + 1}:"
+      phone.instance_variables.each do |var|
+        puts "#{var.to_s.delete('@')}: #{phone.instance_variable_get(var)}"
+      end
+      puts "----------------------------"
+    end
+  end
+end
+# Function to delete cellphones by OEM name
+def delete_cellphones_by_oem(cell, oem_name)
+  # Get all cellphone objects
+  cellphones = cell.get_cellphones
+
+  # Filter cellphones by the provided OEM name
+  selected_cellphones = cellphones.select { |phone| phone.get_oem == oem_name }
+
+  # Iterate over selected cellphones and delete them
+  selected_cellphones.each do |phone|
+    cell.delete_cellphone(phone)
+  end
+
+  # Print a message indicating the deletion
+  puts "Deleted all cellphones for #{oem_name}."
+end
