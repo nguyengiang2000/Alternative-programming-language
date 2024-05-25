@@ -17,10 +17,15 @@ Please include a README.md file with your repo that will serve as a survey of yo
     * **CSV** which reading and writing CSV files.
     * The second one is **require_relative** which allows user to load files relative to the current file. 
     * The last one is **puts** which similar to print statement and used to output strings to console.
-* **Answer the following questions (and provide a corresponding screen showing output answering them):**
-  * What company (oem) has the highest average weight of the phone body?
-    * The company has the highest average weight of the phone body is HP with 453.6 grams
-  * How many phones have only one feature sensor?
-    * There are 432 phones which 407 have V1 sensors and 25 phone come oth Accelerometer sensors.
-  * What year had the most phones launched in any year later than 1999? 
-    * 2019 is the year that had the most phones launched later than 1999.
+    * **Answer the following questions (and provide a corresponding screen showing output answering them):**
+      * What company (oem) has the highest average weight of the phone body?
+        * The company has the highest average weight of the phone body is HP with 453.6 grams
+    
+        * ![pic1](average_weight.png)
+
+      * How many phones have only one feature sensor?
+        * There are 432 phones which 407 have V1 sensors and 25 phone come oth Accelerometer sensors.
+        * ![pic2](sesnors.png)
+      * What year had the most phones launched in any year later than 1999? 
+        * 2019 is the year that had the most phones launched later than 1999.
+        * ![pic3](year-most.png)
