@@ -129,18 +129,22 @@ class Cell
     @platform_os[key]
   end
 
-  # Add cellphone in the list
-  def add_cellphone(cellphone)
-    @cellphones << cellphone
-  end
-  # Delete cellphone in the list
-  def delete_cellphone(cellphone)
-    @cellphones.delete(cellphone)
-  end
   # Retrieve all Cellphone objects stored in the array
   def get_cellphones
     @cellphones
   end
+
+  # Add cellphone in the list
+  def add_cellphone(cellphone)
+    @cellphones << cellphone
+  end
+
+  # Delete cellphone in the list
+  def delete_cellphone(cellphone)
+    @cellphones.delete(cellphone)
+  end
+
+  # count for how many OEM in the list
   def get_oem_size
     @oem.size
   end
