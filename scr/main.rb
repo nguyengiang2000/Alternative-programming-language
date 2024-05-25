@@ -116,13 +116,16 @@ delete_duplicates(cell)
 
 # Function to calculate average weight for each OEM
 
-puts "Average Weight for Each OEM:"
+puts "------------------------------------Average Weight for Each OEM: ------------------------------------"
 average_weights = calculate_average_weight(cell)
 average_weights.each do |oem, average_weight|
   puts "#{oem}: #{average_weight || 'No data'}"
 end
+puts "-----------------------------------------------------------------------------------------------------"
 
 # Call the function to list cellphones by OEM name
 #list_cellphones_by_oem(cell, "Huawei")  # Replace "Samsung" with the desired OEM name
 # Delete phone by given OEM name
 #delete_cellphones_by_oem(cell, "Xiaomi")
+# Function to find phones announced in one year and released in another
+#
