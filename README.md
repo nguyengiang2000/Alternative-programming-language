@@ -4,7 +4,7 @@ Please include a README.md file with your repo that will serve as a survey of yo
 
 * **Which programming language and version did you pick?**
 
-  * I pick **Ruby** as my programming language for this project.
+  * I pick **Ruby** as my programming language for this project. The Ruby version is 3.3.1. I'm using RubyMine IDE.
 
 * **Why did you pick this programming language?**
   * I pick Ruby because it's known as one of the easy programming language to learn. Since Spring quarter is very busy so i believe this is the best choice i have.
