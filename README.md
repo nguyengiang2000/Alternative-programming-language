@@ -14,7 +14,7 @@ Please include a README.md file with your repo that will serve as a survey of yo
   * In Ruby, exceptions are treated as objects, providing a powerful error handling system. Exceptions are represented as objects, with a large collection of predefined exception classes. All handled exceptions are either objects of the StandardError class or its subclasses. When an unexpected situation occurs, such as dividing by zero or accessing an invalid index, Ruby throws an exception object. Exception handling in Ruby can be done with the 'rescue' clause, which is attached to a statement within a 'begin-end block' . An 'else' clause and/or an 'ensure' clause can also be included in the block. Ruby also allows for the rerun of code that raised an exception, enhancing flexibility in error recovery. This systematic approach allows developers to create more reliable and flexible software, ensuring smoother execution even in the face of unexpected events.
 * **List out 3 libraries you used from your programming language (if applicable) and explain what they are, why you chose them and what you used them for.**
   * Libraries i used in Ruby are:
-    * **CSV** which reading and writting CSV files.
+    * **CSV** which reading and writing CSV files.
     * The second one is **require_relative** which allows user to load files relative to the current file. 
     * The last one is **puts** which similar to print statement and used to output strings to console.
 * **Answer the following questions (and provide a corresponding screen showing output answering them):**
