@@ -68,6 +68,8 @@ def process_value(cell, key, value, row)
   end
 
   cell.send("set_#{key}", value, cell.send("get_#{key}", value).to_i + 1)
+
+  # initializing object phone and add them into cellphone list!
   if key == 'model'
     cellphone = Cellphone.new(row)
     cell.add_cellphone(cellphone)
