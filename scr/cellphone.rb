@@ -18,22 +18,6 @@ class Cellphone
     @display_resolution = row['display_resolution']
     @features_sensors = row['features_sensors']
     @platform_os = row['platform_os']
-
-    if row
-      # Initialize with values from the row if provided
-      @oem = row['oem']
-      @model = row['model']
-      @launch_announced = row['launch_announced']
-      @launch_status = row['launch_status']
-      @body_dimensions = row['body_dimensions']
-      @body_weight = row['body_weight']
-      @body_sim = row['body_sim']
-      @display_type = row['display_type']
-      @display_size = row['display_size']
-      @display_resolution = row['display_resolution']
-      @features_sensors = row['features_sensors']
-      @platform_os = row['platform_os']
-    end
   end
 
   # Setter methods
