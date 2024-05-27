@@ -73,6 +73,8 @@ def process_value(cell, key, value, row)
   if key == 'model'
     cellphone = Cellphone.new(row)
     cell.add_cellphone(cellphone)
+    # Call the function to delete duplicated cellphone objects
+    delete_duplicates(cell)
   end
 end
 
@@ -113,8 +115,7 @@ puts "Platform OS counts:"
 puts cell.platform_os.inspect
 
 
-# Call the function to delete duplicated cellphone objects
-delete_duplicates(cell)
+
 
 # Function to calculate average weight for each OEM
 
@@ -130,4 +131,50 @@ puts "--------------------------------------------------------------------------
 # Delete phone by given OEM name
 #delete_cellphones_by_oem(cell, "Xiaomi")
 # Function to find phones announced in one year and released in another
-#
+
+puts "-----Unit Test 1-----"
+# Unit Test 1
+# Check if cellphones list of cell has duplicated element or not!
+def check_duplicates(cell)
+  phone_list = cell.get_cellphones
+  unique_phones = phone_list.uniq { |phone| phone.hash }
+  if unique_phones.length == phone_list.length
+    puts "List has no duplicated!"
+  else
+    puts "List has duplicated elements!"
+  end
+end
+
+check_duplicates(cell)
+
+puts "-----Unit Test 2-----"
+# Unit Test 2
+# check if file is CSV or different format!
+def check_file_is_csv(file_path)
+  begin
+    CSV.read(file_path, headers: true)
+    puts "File is recognized as CSV!"
+  rescue CSV::MalformedCSVError
+    puts "Invalid file format!"
+  rescue Errno::ENOENT
+    puts "File is not exist!"
+  end
+end
+
+check_file_is_csv(csv_path)
+
+puts "-----Unit Test 3-----"
+# Unit test 3
+# check if cellphones list of cell are all cellphone object are not
+# True is all objects are cellphone object
+# False is there is at least one element in the cellphones list is not cellphone object
+def check_all_cellphones_are_cellphone_class(cell)
+  result = cell.get_cellphones.all? { |phone| phone.is_a?(Cellphone) }
+  if result == true
+    puts "All objects in cellphones list are cellphone!"
+  else
+    puts "Object type is not correct!"
+  end
+end
+
+check_all_cellphones_are_cellphone_class(cell)
